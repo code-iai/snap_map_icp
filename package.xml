@@ -4,6 +4,7 @@
   <author>Thomas Ruehr</author>
   <license>BSD</license>
   <version>0.0.0</version>
+  <maintainer email="mhorst@cs.uni-bremen.de">Moritz Horstmann</maintainer>
   <url>http://ros.org/wiki/SnapMapICP</url>
 
   <buildtool_depend>catkin</buildtool_depend>
