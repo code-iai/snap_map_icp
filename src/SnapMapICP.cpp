@@ -35,6 +35,7 @@
 #include <nav_msgs/OccupancyGrid.h>
 //for point_cloud::fromROSMsg
 #include <pcl/ros/conversions.h>
+#include <pcl_conversions/pcl_conversions.h>
 #include <sensor_msgs/point_cloud_conversion.h>
 #include <sensor_msgs/LaserScan.h>
 #include <pcl/point_types.h>
@@ -178,8 +179,10 @@ void mapCallback(const nav_msgs::OccupancyGrid& msg)
     //cloud_xyz->width    = 100; // 100
     cloud_xyz->height   = 1;
     cloud_xyz->is_dense = false;
-    cloud_xyz->header.stamp = ros::Time(0);
-    cloud_xyz->header.frame_id = "/map";
+    std_msgs::Header header;
+    header.stamp = ros::Time(0);
+    header.frame_id = "/map";
+    cloud_xyz->header = pcl_conversions::toPCL(header);
 
     pcl::PointXYZ point_xyz;
 
