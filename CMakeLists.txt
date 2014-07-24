@@ -5,15 +5,20 @@ find_package(catkin REQUIRED COMPONENTS
 	roscpp
 	laser_geometry
 	pcl_ros
+        pcl_conversions
 	tf
-)
+        std_msgs
+        nav_msgs)
 
 find_package(Eigen REQUIRED)
-include_directories(${EIGEN_INCLUDE_DIRS})
+find_package(PCL REQUIRED)
+
 add_definitions(${EIGEN_DEFINITIONS})
 
-find_package(PCL REQUIRED)
-include_directories(${PCL_INCLUDE_DIRS})
+include_directories(
+  ${CATKIN_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS})
 
 catkin_package()
 
