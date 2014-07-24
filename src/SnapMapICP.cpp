@@ -496,18 +496,18 @@ void updateParams()
 {
     paramsWereUpdated = ros::Time::now();
     // nh.param<std::string>("default_param", default_param, "default_value");
-    nh->param<bool>("USE_SIM_TIME", use_sim_time, false);
-    nh->param<double>("SnapMapICP/icp_fitness_threshold", ICP_FITNESS_THRESHOLD, 100 );
-    nh->param<double>("SnapMapICP/age_threshold", AGE_THRESHOLD, 1);
-    nh->param<double>("SnapMapICP/angle_upper_threshold", ANGLE_UPPER_THRESHOLD, 1);
-    nh->param<double>("SnapMapICP/angle_threshold", ANGLE_THRESHOLD, 0.01);
-    nh->param<double>("SnapMapICP/update_age_threshold", UPDATE_AGE_THRESHOLD, 1);
-    nh->param<double>("SnapMapICP/dist_threshold", DIST_THRESHOLD, 0.01);
-    nh->param<double>("SnapMapICP/icp_inlier_threshold", ICP_INLIER_THRESHOLD, 0.88);
-    nh->param<double>("SnapMapICP/icp_inlier_dist", ICP_INLIER_DIST, 0.1);
-    nh->param<double>("SnapMapICP/icp_num_iter", ICP_NUM_ITER, 250);
-    nh->param<double>("SnapMapICP/pose_covariance_trans", POSE_COVARIANCE_TRANS, 0.5);
-    nh->param<double>("SnapMapICP/scan_rate", SCAN_RATE, 2);
+    nh->param<bool>("/USE_SIM_TIME", use_sim_time, false);
+    nh->param<double>("icp_fitness_threshold", ICP_FITNESS_THRESHOLD, 100 );
+    nh->param<double>("age_threshold", AGE_THRESHOLD, 1);
+    nh->param<double>("angle_upper_threshold", ANGLE_UPPER_THRESHOLD, 1);
+    nh->param<double>("angle_threshold", ANGLE_THRESHOLD, 0.01);
+    nh->param<double>("update_age_threshold", UPDATE_AGE_THRESHOLD, 1);
+    nh->param<double>("dist_threshold", DIST_THRESHOLD, 0.01);
+    nh->param<double>("icp_inlier_threshold", ICP_INLIER_THRESHOLD, 0.88);
+    nh->param<double>("icp_inlier_dist", ICP_INLIER_DIST, 0.1);
+    nh->param<double>("icp_num_iter", ICP_NUM_ITER, 250);
+    nh->param<double>("pose_covariance_trans", POSE_COVARIANCE_TRANS, 0.5);
+    nh->param<double>("scan_rate", SCAN_RATE, 2);
     if (SCAN_RATE < .001)
         SCAN_RATE  = .001;
     //ROS_DEBUG("PARAM UPDATE");
@@ -519,11 +519,11 @@ int main(int argc, char** argv)
 
 // Init the ROS node
     ros::init(argc, argv, "snapmapicp");
-    ros::NodeHandle nh_;
+    ros::NodeHandle nh_("~");
     nh = &nh_;
 
-    nh->param<std::string>("SnapMapICP/odom_frame", ODOM_FRAME, "/odom_combined");
-    nh->param<std::string>("SnapMapICP/base_laser_frame", BASE_LASER_FRAME, "/base_laser_link");
+    nh->param<std::string>("odom_frame", ODOM_FRAME, "/odom_combined");
+    nh->param<std::string>("base_laser_frame", BASE_LASER_FRAME, "/base_laser_link");
 
     last_processed_scan = ros::Time::now();
 
