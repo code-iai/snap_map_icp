@@ -1,7 +1,7 @@
-SnapMapICP
+snap_map_icp
 ----------
 
-SnapMapICP provides ROS node relocalizing a ROS-enabled robot based on it's base laser readings and matching them with the currently advertised /map topic.
+snap_map_icp provides ROS node relocalizing a ROS-enabled robot based on it's base laser readings and matching them with the currently advertised /map topic.
 
 See:
 http://ros.org/wiki/SnapMapICP
