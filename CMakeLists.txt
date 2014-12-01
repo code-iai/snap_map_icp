@@ -1,42 +1,32 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(snap_map_icp)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+find_package(catkin REQUIRED COMPONENTS
+	roscpp
+	laser_geometry
+	pcl_ros
+        pcl_conversions
+	tf
+        std_msgs
+        nav_msgs
+	cmake_modules)
 
-rosbuild_init()
-
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
-
-#find_package(catkin)
 find_package(Eigen REQUIRED)
-include_directories(${EIGEN_INCLUDE_DIRS})
+find_package(PCL REQUIRED)
+
 add_definitions(${EIGEN_DEFINITIONS})
 
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-rosbuild_add_executable(SnapMapICP src/SnapMapICP.cpp)
-rosbuild_add_executable(TFpub src/TFpub.cpp)
-rosbuild_add_executable(FreezeCloud2 src/FreezeCloud2.cpp)
+include_directories(
+  ${CATKIN_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS})
 
-#target_link_libraries(example ${PROJECT_NAME})
+catkin_package()
 
-target_link_libraries(TFpub ${catkin_LIBRARIES})
-target_link_libraries(FreezeCloud2 ${catkin_LIBRARIES})
-target_link_libraries(SnapMapICP ${catkin_LIBRARIES})
+add_executable(snap_map_icp src/SnapMapICP.cpp)
+add_executable(tf_pub src/TFpub.cpp)
+add_executable(freeze_cloud2 src/FreezeCloud2.cpp)
+
+target_link_libraries(tf_pub ${catkin_LIBRARIES})
+target_link_libraries(freeze_cloud2 ${catkin_LIBRARIES})
+target_link_libraries(snap_map_icp ${catkin_LIBRARIES} ${PCL_LIBRARIES})

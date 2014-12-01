@@ -1,0 +1,32 @@
+<package>
+  <name>snap_map_icp</name>
+  <description>
+    snap_map_icp provides a ROS node relocalizing a ROS-enabled robot based on
+    it's base laser readings and matching them with the currently advertised
+    /map topic.
+  </description>
+  <author>Thomas Ruehr</author>
+  <license>BSD</license>
+  <version>0.0.0</version>
+  <maintainer email="mhorst@cs.uni-bremen.de">Moritz Horstmann</maintainer>
+  <url>http://ros.org/wiki/SnapMapICP</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>libpcl-all</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>pcl_conversions</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>laser_geometry</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>cmake_modules</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>libpcl-all</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>pcl_conversions</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>laser_geometry</run_depend>
+  <run_depend>tf</run_depend>
+</package>

@@ -1,0 +1,33 @@
+<launch>
+  <node pkg="snap_map_icp" type="snap_map_icp" name="snap_map_icp" output="screen">
+    <!-- relevant scan frames -->
+    <param name="odom_frame" value="/odom_combined"/>
+    <param name="base_laser_frame" value="/base_laser_link"/>
+
+    <!-- defines minimum fitness for candidates for pose publishing -->
+    <param name="icp_fitness_threshold" value="100"/>
+ 
+    <!-- accept only scans one second old or younger -->
+    <param name="age_threshold" value="1"/>
+    <param name="update_age_threshold" value="1"/>
+
+    <!-- thresholds over distance btw amcl icp pose to trigger pose publishing -->
+    <!-- translation -->
+    <param name="dist_threshold" value="0.01"/>
+    <!-- rotation -->
+    <param name="angle_threshold" value="0.01"/>
+    <param name="angle_upper_threshold" value="1"/>
+
+    <!-- various icp parameters -->
+    <!-- consult with icp algorithm from pcl for details -->
+    <param name="icp_inlier_threshold" value="0.88"/>
+    <param name="icp_inlier_dist" value="0.1"/>
+    <param name="icp_num_iter" value="250"/>
+
+    <!-- who knows??? -->
+    <param name="pose_covariance_trans" value="0.5"/>
+
+    <!-- rate at which scans are taken -->
+    <param name="scan_rate" value="2"/>
+  </node>
+</launch>
