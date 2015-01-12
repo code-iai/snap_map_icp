@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
         pcl_conversions
 	tf
         std_msgs
+	cmake_modules
         nav_msgs)
 
 find_package(Eigen REQUIRED)
