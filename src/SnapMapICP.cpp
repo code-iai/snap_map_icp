@@ -379,7 +379,7 @@ void scanCallback (const sensor_msgs::LaserScan::ConstPtr& scan_in)
             pcl::fromROSMsg(*output_cloud,*myMapCloud);
             pcl::fromROSMsg(cloud2,*myScanCloud);
 
-            reg.setInputCloud(myScanCloud);
+            reg.setInputSource(myScanCloud);
             reg.setInputTarget(myMapCloud);
 
             PointCloudT unused;
