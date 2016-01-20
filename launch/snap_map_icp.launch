@@ -1,5 +1,21 @@
 <launch>
   <node pkg="snap_map_icp" type="snap_map_icp" name="snap_map_icp" output="screen">
+    <!-- subscriptions -->
+    <remap from="/snap_map_icp/base_scan" to="/base_scan"/>
+    <remap from="/snap_map_icp/map" to="/map"/>
+
+    <!-- publishers -->
+    <remap from="/snap_map_icp/SnapMapICP" to="/SnapMapICP"/>
+    <remap from="/snap_map_icp/scan_points_transformed" to="/scan_points_transformed"/>
+    <remap from="/snap_map_icp/initialpose" to="/initialpose"/>
+    <remap from="/snap_map_icp/scan_points" to="/scan_points"/>
+    <remap from="/snap_map_icp/map_points" to="/map_points"/>
+  
+    <!-- services -->
+    <remap from="/snap_map_icp/set_loger_level" to="/set_loger_level"/>
+    <remap from="/snap_map_icp/get_loggers" to="/get_loggers"/>
+    <remap from="/snap_map_icp/tf_frames" to="/tf_frames"/>
+ 
     <!-- relevant scan frames -->
     <param name="odom_frame" value="/odom_combined"/>
     <param name="base_laser_frame" value="/base_laser_link"/>
