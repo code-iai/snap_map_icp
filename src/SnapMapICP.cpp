@@ -475,6 +475,7 @@ void scanCallback (const sensor_msgs::LaserScan::ConstPtr& scan_in)
                 ROS_DEBUG("i %i converged %i SCORE: %f", i,  reg.hasConverged (),  reg.getFitnessScore()  );
                 ROS_DEBUG("PUBLISHING A NEW INITIAL POSE dist %f angleDist %f Setting pose: %.3f %.3f  [frame=%s]",dist, angleDist , pose.pose.pose.position.x  , pose.pose.pose.position.y , pose.header.frame_id.c_str());
                 pub_pose.publish(pose);
+                ROS_INFO("snap map ICP published new pose ...");
                 strmsg.data += " << SENT";
             }
 
