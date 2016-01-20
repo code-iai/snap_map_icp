@@ -519,6 +519,7 @@ int main(int argc, char** argv)
 {
 
 // Init the ROS node
+    ROS_WARN("Make sure you are launching the snap_map_icp.launch file!!!");
     ros::init(argc, argv, "snapmapicp");
     ros::NodeHandle nh_("~");
     nh = &nh_;
