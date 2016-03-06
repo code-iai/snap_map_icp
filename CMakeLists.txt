@@ -17,7 +17,7 @@ find_package(PCL REQUIRED)
 add_definitions(${EIGEN_DEFINITIONS})
 
 include_directories(
-  ${CATKIN_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
   ${EIGEN_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS})
 
